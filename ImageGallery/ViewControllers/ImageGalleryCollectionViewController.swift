@@ -12,6 +12,9 @@ private let reuseIdentifier = "Cell"
 
 class ImageGalleryCollectionViewController: UICollectionViewController, UIDropInteractionDelegate {
   
+  var images = [UIImage]()
+  
+  @IBOutlet weak var backgounrdImageView: UIImageView!
   var imageFetcher: ImageFetcher!
   @IBOutlet weak var dropZone: UICollectionView! {
     didSet {
@@ -30,7 +33,8 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
   func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
     imageFetcher = ImageFetcher() { (url, image) in
         DispatchQueue.main.async {
-          print(self.view)
+          self.images.append(image)
+          self.collectionView.reloadData()
         }
     }
     session.loadObjects(ofClass: NSURL.self) { urls in
@@ -71,19 +75,21 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return 5
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
     
-        // Configure the cell
+      if let image = images.indices.contains(indexPath.row) ? images[indexPath.row] : nil {
+        cell.backgroundView = UIImageView(image: image)
+      }
     
         return cell
     }

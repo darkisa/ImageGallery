@@ -13,6 +13,9 @@
 		A259040B2236EF630001B4B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25904092236EF630001B4B6 /* LaunchScreen.storyboard */; };
 		A25904142236F1020001B4B6 /* ImageGalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25904132236F1020001B4B6 /* ImageGalleryCollectionViewController.swift */; };
 		A25904162236F8630001B4B6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25904152236F8620001B4B6 /* Utilities.swift */; };
+		A2590418223C054C0001B4B6 /* ImageGallerySelectorViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2590417223C054C0001B4B6 /* ImageGallerySelectorViewControllerTableViewController.swift */; };
+		A259041A223C0A3D0001B4B6 /* ImageGalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2590419223C0A3D0001B4B6 /* ImageGalleryTableViewCell.swift */; };
+		A259041E223C249D0001B4B6 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A259041D223C249D0001B4B6 /* ImageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		A259040C2236EF630001B4B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A25904132236F1020001B4B6 /* ImageGalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryCollectionViewController.swift; sourceTree = "<group>"; };
 		A25904152236F8620001B4B6 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		A2590417223C054C0001B4B6 /* ImageGallerySelectorViewControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGallerySelectorViewControllerTableViewController.swift; sourceTree = "<group>"; };
+		A2590419223C0A3D0001B4B6 /* ImageGalleryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryTableViewCell.swift; sourceTree = "<group>"; };
+		A259041D223C249D0001B4B6 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +62,8 @@
 		A25903FF2236EF620001B4B6 /* ImageGallery */ = {
 			isa = PBXGroup;
 			children = (
-				A25904132236F1020001B4B6 /* ImageGalleryCollectionViewController.swift */,
+				A259041C223C0A5B0001B4B6 /* ViewControllers */,
+				A259041B223C0A420001B4B6 /* Views */,
 				A25904122236EF9D0001B4B6 /* Assests */,
 				A25904042236EF620001B4B6 /* Main.storyboard */,
 				A25904092236EF630001B4B6 /* LaunchScreen.storyboard */,
@@ -73,6 +80,24 @@
 				A25904072236EF630001B4B6 /* Assets.xcassets */,
 			);
 			path = Assests;
+			sourceTree = "<group>";
+		};
+		A259041B223C0A420001B4B6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A259041D223C249D0001B4B6 /* ImageCollectionViewCell.swift */,
+				A2590419223C0A3D0001B4B6 /* ImageGalleryTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A259041C223C0A5B0001B4B6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A25904132236F1020001B4B6 /* ImageGalleryCollectionViewController.swift */,
+				A2590417223C054C0001B4B6 /* ImageGallerySelectorViewControllerTableViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +171,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A259041E223C249D0001B4B6 /* ImageCollectionViewCell.swift in Sources */,
+				A259041A223C0A3D0001B4B6 /* ImageGalleryTableViewCell.swift in Sources */,
+				A2590418223C054C0001B4B6 /* ImageGallerySelectorViewControllerTableViewController.swift in Sources */,
 				A25904162236F8630001B4B6 /* Utilities.swift in Sources */,
 				A25904012236EF620001B4B6 /* AppDelegate.swift in Sources */,
 				A25904142236F1020001B4B6 /* ImageGalleryCollectionViewController.swift in Sources */,
