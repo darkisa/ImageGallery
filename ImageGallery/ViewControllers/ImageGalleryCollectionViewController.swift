@@ -49,6 +49,18 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
     }
   }
   
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let destination = segue.destination as? ShowImageViewController {
+      if let collectionItem = sender as? Int {
+          destination.imageBuffer = UIImageView(image: images[collectionItem])
+      }
+    }
+  }
+  
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
+    performSegue(withIdentifier: "ShowImageDetail", sender: indexPath.row)
+  }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,7 +93,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 5
+        return images.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
