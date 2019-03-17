@@ -37,9 +37,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </view>
                                 <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <segue destination="aUT-cr-yUg" kind="show" identifier="ShowImageDetail" id="GW2-W1-vxo"/>
-                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -50,6 +47,7 @@
                     <connections>
                         <outlet property="backgounrdImageView" destination="RVR-xI-cdo" id="1c1-B9-KIE"/>
                         <outlet property="dropZone" destination="mJR-cp-HhR" id="F0Y-c8-dFx"/>
+                        <segue destination="aUT-cr-yUg" kind="show" identifier="ShowImageDetail" id="hd8-Rz-r0i"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBk-Cy-2ck" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -118,7 +116,6 @@
         <!--Navigation Controller-->
         <scene sceneID="etA-BV-opO">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XU9-Be-03m" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="0Y7-iJ-rP9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S13-TR-SXR">
                         <rect key="frame" x="0.0" y="20" width="375" height="50"/>
@@ -128,6 +125,7 @@
                         <segue destination="jRr-6O-XaJ" kind="relationship" relationship="rootViewController" id="hR6-M8-UoE"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XU9-Be-03m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="47" y="-503"/>
         </scene>

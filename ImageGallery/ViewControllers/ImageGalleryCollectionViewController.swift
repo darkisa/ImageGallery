@@ -57,7 +57,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
     }
   }
   
-  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
+  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     performSegue(withIdentifier: "ShowImageDetail", sender: indexPath.row)
   }
   
