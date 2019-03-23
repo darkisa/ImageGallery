@@ -8,11 +8,17 @@
 
 import UIKit
 
-class ShowImageViewController: UIViewController {
+class ShowImageViewController: UIViewController, UIScrollViewDelegate {
 
   var imageBuffer = UIImageView()
   
-  @IBOutlet weak var imageDetail: UIScrollView!
+  @IBOutlet weak var imageDetail: UIScrollView! {
+    didSet {
+      imageDetail.minimumZoomScale = 0.1
+      imageDetail.maximumZoomScale = 5.0
+      imageDetail.delegate = self
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -21,3 +27,4 @@ class ShowImageViewController: UIViewController {
   
 
 }
+

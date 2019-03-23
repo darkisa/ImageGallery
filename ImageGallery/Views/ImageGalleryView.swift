@@ -1,0 +1,30 @@
+//
+//  ImageGallery.swift
+//  ImageGallery
+//
+//  Created by Darko Mijatovic on 3/23/19.
+//  Copyright © 2019 Darko Mijatovic. All rights reserved.
+//
+
+import UIKit
+
+class ImageGalleryView: UICollectionView {
+
+  
+  //initWithCode to init view from xib or storyboard
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    setCellSize()
+  }
+  
+  private func setCellSize() {
+    let containerWidth = bounds.width
+    let columns = CGFloat(3)
+    if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
+      let sideMargins = layout.sectionInset.left + layout.sectionInset.right
+      let cellSpacing = layout.minimumInteritemSpacing * 4
+      let cellWidth = (containerWidth - (sideMargins + cellSpacing * (columns - 1))) / 3
+      layout.itemSize.width = cellWidth
+    }
+  }
+}
