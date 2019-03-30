@@ -10,6 +10,7 @@ import UIKit
 
 class ImageGalleryView: UICollectionView {
 
+  var totalWidth: CGFloat = 0
   
   //initWithCode to init view from xib or storyboard
   required init?(coder aDecoder: NSCoder) {
@@ -24,6 +25,8 @@ class ImageGalleryView: UICollectionView {
   
   func setCellSize() {
     let containerWidth = bounds.width
+    if containerWidth == totalWidth { return }
+    totalWidth = containerWidth
     let columns = CGFloat(3)
     if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
       let sideMargins = layout.sectionInset.left + layout.sectionInset.right

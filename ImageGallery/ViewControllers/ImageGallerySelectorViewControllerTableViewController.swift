@@ -11,7 +11,7 @@ import UIKit
 class ImageGallerySelectorViewControllerTableViewController: UITableViewController {
   
   
-  var imageGalleries = [String]()
+  var imageGalleries = ["Recently Deleted": [String](), "Gallery": [String]()]
   override func viewDidLoad() {
       super.viewDidLoad()
 
@@ -36,12 +36,14 @@ class ImageGallerySelectorViewControllerTableViewController: UITableViewControll
 
   override func numberOfSections(in tableView: UITableView) -> Int {
       // #warning Incomplete implementation, return the number of sections
-      return 2
+      return imageGalleries.count
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       // #warning Incomplete implementation, return the number of rows
-      return 5
+    let currentSection = Array(imageGalleries.keys)[section]
+    let noOfRows = imageGalleries[currentSection]?.count ?? 0
+    return noOfRows
   }
 
 
@@ -52,6 +54,11 @@ class ImageGallerySelectorViewControllerTableViewController: UITableViewControll
 
 
       return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    let sectionText = Array(imageGalleries.keys)[section]
+    return sectionText
   }
 
   /*
