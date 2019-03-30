@@ -17,12 +17,17 @@ class ImageGalleryView: UICollectionView {
     setCellSize()
   }
   
-  private func setCellSize() {
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    setCellSize()
+  }
+  
+  func setCellSize() {
     let containerWidth = bounds.width
     let columns = CGFloat(3)
     if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout {
       let sideMargins = layout.sectionInset.left + layout.sectionInset.right
-      let cellSpacing = layout.minimumInteritemSpacing * 4
+      let cellSpacing = layout.minimumInteritemSpacing * 2
       let cellWidth = (containerWidth - (sideMargins + cellSpacing * (columns - 1))) / 3
       layout.itemSize.width = cellWidth
     }

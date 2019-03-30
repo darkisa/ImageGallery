@@ -32,21 +32,26 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
   }
   
   func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-    var cellImage = Image()
+    var cellImage = Image() { [weak self](image) in
+      self?.images.append(image)
+      self?.collectionView.reloadData()
+    }
     session.loadObjects(ofClass: NSURL.self) { urls in
       if let url = urls.first as? URL {
         cellImage.url = url
-        print(cellImage)
       }
     }
     session.loadObjects(ofClass: UIImage.self) { images in
       if let image = images.first as? UIImage {
         cellImage.aspectRatio = Double(image.size.height / image.size.width)
-        print(cellImage)
       }
     }
-    images.append(cellImage)
-    collectionView.reloadData()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    if let collectioView = view as? ImageGalleryView {
+      collectioView.setCellSize()
+    }
   }
   
 //  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,7 +103,6 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
 
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
-    print(images)
     if let url = images[indexPath.row].url {
       (cell as? ImageCollectionViewCell)?.imageURL = url
     }
@@ -136,13 +140,11 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
   }
   */
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
-    if let layout = self.collectionViewLayout as? UICollectionViewFlowLayout  {
-      layout.itemSize.height = 2
-    }
-
-    return CGSize(width: 200, height: 300)
+    let aspectRatio = images[indexPath.row].aspectRatio
+    let width = (collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize.width ?? 200
+    let height = width * CGFloat(aspectRatio!)
+    return CGSize(width: width, height: height)
   }
-
 }
 
 extension URL {
