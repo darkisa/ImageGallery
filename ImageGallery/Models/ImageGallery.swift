@@ -8,8 +8,18 @@
 
 import Foundation
 
+struct GallerySections {
+  var name: String
+  var galleries: [ImageGallery]
+  
+  init(name: String) {
+    self.name = name
+    galleries = [ImageGallery]()
+  }
+}
+
 struct ImageGallery {
-  var name: String? = nil
+  var name: String = "Undefined"
   var images = [Image]()
 }
 

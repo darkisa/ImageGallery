@@ -8,23 +8,25 @@
 
 import UIKit
 
-class ImageGallerySelectorViewControllerTableViewController: UITableViewController {
+class ImageGallerySelectorTableViewController: UITableViewController {
   
+  var gallerySections = [GallerySections(name: "Galleries"), GallerySections(name: "Recently Deleted")]
   
-  var imageGalleries = ["Recently Deleted": [String](), "Gallery": [String]()]
   override func viewDidLoad() {
       super.viewDidLoad()
 
       // Uncomment the following line to preserve selection between presentations
       // self.clearsSelectionOnViewWillAppear = false
 
-      // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-      // self.navigationItem.rightBarButtonItem = self.editButtonItem
+       // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+       // self.navigationItem.rightBarButtonItem = self.editButtonItem
   }
   
   
   @IBAction func newImageGallery(_ sender: UIBarButtonItem) {
-    
+    let newImageGallery = ImageGallery(name: "Test", images: [Image]())
+    gallerySections[0].galleries.append(newImageGallery)
+    self.tableView.reloadData()
   }
   
   override func viewWillLayoutSubviews() {
@@ -36,29 +38,23 @@ class ImageGallerySelectorViewControllerTableViewController: UITableViewControll
 
   override func numberOfSections(in tableView: UITableView) -> Int {
       // #warning Incomplete implementation, return the number of sections
-      return imageGalleries.count
+      return gallerySections.count
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       // #warning Incomplete implementation, return the number of rows
-    let currentSection = Array(imageGalleries.keys)[section]
-    let noOfRows = imageGalleries[currentSection]?.count ?? 0
-    return noOfRows
+    return gallerySections[section].galleries.count
   }
 
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "ImageGalleryCell", for: indexPath)
       cell.textLabel?.text = "Test"
-      cell.detailTextLabel?.text = "Test2"
-
-
       return cell
   }
   
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    let sectionText = Array(imageGalleries.keys)[section]
-    return sectionText
+    return gallerySections[section].name
   }
 
   /*

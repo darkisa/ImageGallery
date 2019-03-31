@@ -13,7 +13,6 @@ private let reuseIdentifier = "Cell"
 class ImageGalleryCollectionViewController: UICollectionViewController, UIDropInteractionDelegate, UICollectionViewDelegateFlowLayout {
   
   var gallery = ImageGallery()
-  var images = [Image]()
 
   var imageFetcher: ImageFetcher!
   @IBOutlet weak var imageGallery: UICollectionView! {
@@ -33,7 +32,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
   
   func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
     var cellImage = Image() { [weak self](image) in
-      self?.images.append(image)
+      self?.gallery.images.append(image)
       self?.collectionView.reloadData()
     }
     session.loadObjects(ofClass: NSURL.self) { urls in
@@ -57,7 +56,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
 //  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //    if let destination = segue.destination as? ShowImageViewController {
 //      if let collectionItem = sender as? Int {
-//          destination.imageBuffer = UIImageView(image: images[collectionItem])
+//          destination.imageBuffer = UIImageView(image: gallery.images[collectionItem])
 //      }
 //    }
 //  }
@@ -98,12 +97,12 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
 
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       // #warning Incomplete implementation, return the number of items
-      return images.count
+      return gallery.images.count
   }
 
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
-    if let url = images[indexPath.row].url {
+    if let url = gallery.images[indexPath.row].url {
       (cell as? ImageCollectionViewCell)?.imageURL = url
     }
     return cell
@@ -140,7 +139,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
   }
   */
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let aspectRatio = images[indexPath.row].aspectRatio
+    let aspectRatio = gallery.images[indexPath.row].aspectRatio
     let width = (collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize.width ?? 200
     let height = width * CGFloat(aspectRatio!)
     return CGSize(width: width, height: height)

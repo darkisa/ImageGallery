@@ -13,7 +13,7 @@
 		A259040B2236EF630001B4B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A25904092236EF630001B4B6 /* LaunchScreen.storyboard */; };
 		A25904142236F1020001B4B6 /* ImageGalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25904132236F1020001B4B6 /* ImageGalleryCollectionViewController.swift */; };
 		A25904162236F8630001B4B6 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25904152236F8620001B4B6 /* Utilities.swift */; };
-		A2590418223C054C0001B4B6 /* ImageGallerySelectorViewControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2590417223C054C0001B4B6 /* ImageGallerySelectorViewControllerTableViewController.swift */; };
+		A2590418223C054C0001B4B6 /* ImageGallerySelectorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2590417223C054C0001B4B6 /* ImageGallerySelectorTableViewController.swift */; };
 		A259041A223C0A3D0001B4B6 /* ImageGalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2590419223C0A3D0001B4B6 /* ImageGalleryTableViewCell.swift */; };
 		A259041E223C249D0001B4B6 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A259041D223C249D0001B4B6 /* ImageCollectionViewCell.swift */; };
 		A2590420223D758E0001B4B6 /* ShowImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A259041F223D758E0001B4B6 /* ShowImageViewController.swift */; };
@@ -30,7 +30,7 @@
 		A259040C2236EF630001B4B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A25904132236F1020001B4B6 /* ImageGalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryCollectionViewController.swift; sourceTree = "<group>"; };
 		A25904152236F8620001B4B6 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		A2590417223C054C0001B4B6 /* ImageGallerySelectorViewControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGallerySelectorViewControllerTableViewController.swift; sourceTree = "<group>"; };
+		A2590417223C054C0001B4B6 /* ImageGallerySelectorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGallerySelectorTableViewController.swift; sourceTree = "<group>"; };
 		A2590419223C0A3D0001B4B6 /* ImageGalleryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGalleryTableViewCell.swift; sourceTree = "<group>"; };
 		A259041D223C249D0001B4B6 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		A259041F223D758E0001B4B6 /* ShowImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowImageViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 			children = (
 				A259041F223D758E0001B4B6 /* ShowImageViewController.swift */,
 				A25904132236F1020001B4B6 /* ImageGalleryCollectionViewController.swift */,
-				A2590417223C054C0001B4B6 /* ImageGallerySelectorViewControllerTableViewController.swift */,
+				A2590417223C054C0001B4B6 /* ImageGallerySelectorTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -191,7 +191,7 @@
 				A2590422224678D20001B4B6 /* ImageGalleryView.swift in Sources */,
 				A259041E223C249D0001B4B6 /* ImageCollectionViewCell.swift in Sources */,
 				A259041A223C0A3D0001B4B6 /* ImageGalleryTableViewCell.swift in Sources */,
-				A2590418223C054C0001B4B6 /* ImageGallerySelectorViewControllerTableViewController.swift in Sources */,
+				A2590418223C054C0001B4B6 /* ImageGallerySelectorTableViewController.swift in Sources */,
 				A25904162236F8630001B4B6 /* Utilities.swift in Sources */,
 				A25904012236EF620001B4B6 /* AppDelegate.swift in Sources */,
 				A2590420223D758E0001B4B6 /* ShowImageViewController.swift in Sources */,
