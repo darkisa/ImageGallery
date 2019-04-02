@@ -48,8 +48,8 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    if let collectioView = view as? ImageGalleryView {
-      collectioView.setCellSize()
+    if let collectionView = view as? ImageGalleryView {
+      collectionView.setCellSize()
     }
   }
   

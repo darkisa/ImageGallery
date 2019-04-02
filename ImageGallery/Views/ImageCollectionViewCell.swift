@@ -16,16 +16,20 @@ class ImageCollectionViewCell: UICollectionViewCell {
     }
   }
   
+  override func prepareForReuse() {
+    super.prepareForReuse()
+    self.backgroundView = nil
+  }
+  
   private func updateCellImage() {
-    if backgroundView == nil {
-      if let url = imageURL {
-        DispatchQueue.global(qos: .userInitiated).sync {
-          let image = url.fetchImage(url: url.imageURL)
-          DispatchQueue.main.async { [weak self] in
-            self?.backgroundView = UIImageView(image: image)
-          }
+    if let url = imageURL {
+      DispatchQueue.global(qos: .userInitiated).sync {
+        let image = url.fetchImage(url: url.imageURL)
+        DispatchQueue.main.async { [weak self] in
+          self?.backgroundView = UIImageView(image: image)
         }
       }
     }
   }
+
 }
