@@ -56,6 +56,7 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
 //  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //    if let destination = segue.destination as? ShowImageViewController {
 //      if let collectionItem = sender as? Int {
+//
 //          destination.imageBuffer = UIImageView(image: gallery.images[collectionItem])
 //      }
 //    }
@@ -147,12 +148,14 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
 }
 
 extension URL {
-  func fetchImage(url: URL) -> UIImage? {
-    var image: UIImage? = nil
-    let urlContents = try? Data(contentsOf: url)
-    if let imageData = urlContents {
-      image = UIImage(data: imageData)
+  func fetchImage(url: URL, completionHandler: @escaping (UIImage) -> Void) {
+    DispatchQueue.global(qos: .userInitiated).async {
+      if let urlContents = try? Data(contentsOf: url) {
+        if let fetchedImage = UIImage(data: urlContents) {
+          completionHandler(fetchedImage)
+        }
+      }
     }
-    return image
   }
+  
 }

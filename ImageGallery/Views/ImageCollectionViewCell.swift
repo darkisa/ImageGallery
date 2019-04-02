@@ -10,7 +10,7 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
 
-  var imageURL: URL?  {
+  var imageURL: URL? = nil  {
     didSet{
       updateCellImage()
     }
@@ -22,14 +22,12 @@ class ImageCollectionViewCell: UICollectionViewCell {
   }
   
   private func updateCellImage() {
-    if let url = imageURL {
-      DispatchQueue.global(qos: .userInitiated).sync {
-        let image = url.fetchImage(url: url.imageURL)
-        DispatchQueue.main.async { [weak self] in
-          self?.backgroundView = UIImageView(image: image)
+    if imageURL != nil {
+      imageURL!.fetchImage(url: imageURL!) { [weak self](data) in
+        DispatchQueue.main.async {
+          self?.backgroundView = UIImageView(image: data)
         }
       }
     }
   }
-
 }
