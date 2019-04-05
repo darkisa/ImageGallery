@@ -24,25 +24,10 @@ struct ImageGallery {
 }
 
 struct Image {
-  var url: URL? = nil {
-    didSet {
-      if propertiesAreSet() { handler(self) }
-    }
-  }
-  var aspectRatio: Double? = nil {
-    didSet {
-      if propertiesAreSet() { handler(self) }
-    }
-  }
+  var url: URL? = nil
+  var aspectRatio: Double? = nil
   
-  init(handler: @escaping (Image) -> Void) {
-    self.handler = handler
-  }
-  
-  var handler: (Image) -> Void
-  
-  private func propertiesAreSet() -> Bool {
-    let bool = (url != nil && aspectRatio != nil) ? true : false
-    return bool
+  func propertiesAreSet() -> Bool {
+    return url != nil && aspectRatio != nil
   }
 }

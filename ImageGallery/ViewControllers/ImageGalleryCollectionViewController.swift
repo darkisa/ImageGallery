@@ -13,6 +13,7 @@ private let reuseIdentifier = "Cell"
 class ImageGalleryCollectionViewController: UICollectionViewController, UIDropInteractionDelegate, UICollectionViewDelegateFlowLayout {
   
   var gallery = ImageGallery()
+  
 
   var imageFetcher: ImageFetcher!
   @IBOutlet weak var imageGallery: UICollectionView! {
@@ -31,19 +32,28 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
   }
   
   func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-    var cellImage = Image() { [weak self](image) in
-      self?.gallery.images.append(image)
-      self?.collectionView.reloadData()
-    }
+    var cellImage = Image()
+    let dispatchGroup = DispatchGroup()
+    
+    dispatchGroup.enter()
     session.loadObjects(ofClass: NSURL.self) { urls in
       if let url = urls.first as? URL {
         cellImage.url = url
       }
+      dispatchGroup.leave()
     }
+    dispatchGroup.enter()
     session.loadObjects(ofClass: UIImage.self) { images in
       if let image = images.first as? UIImage {
         cellImage.aspectRatio = Double(image.size.height / image.size.width)
       }
+      dispatchGroup.leave()
+    }
+    dispatchGroup.notify(queue: .main) { [weak self] in
+      if cellImage.propertiesAreSet() {
+        self?.gallery.images.append(cellImage)
+        self?.collectionView.reloadData()
+      } else { return }
     }
   }
   
@@ -53,17 +63,18 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
     }
   }
   
-//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    if let destination = segue.destination as? ShowImageViewController {
-//      if let collectionItem = sender as? Int {
-//
-//          destination.imageBuffer = UIImageView(image: gallery.images[collectionItem])
-//      }
-//    }
-//  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let destination = segue.destination as? ShowImageViewController {
+      if let image = (sender as? ImageCollectionViewCell)?.backgroundView as? UIImageView {
+        print(image)
+        destination.imageBuffer = image
+      }
+    }
+  }
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    performSegue(withIdentifier: "ShowImageDetail", sender: indexPath.row)
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
+    performSegue(withIdentifier: "ShowImageDetail", sender: cell.backgroundView)
   }
   
   override func viewDidLoad() {
