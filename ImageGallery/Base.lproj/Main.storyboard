@@ -77,7 +77,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="wbb-CM-qaW"/>
                     <connections>
-                        <outlet property="imageDetail" destination="msw-pr-eqH" id="Wtf-Ct-zrX"/>
+                        <outlet property="scrollView" destination="msw-pr-eqH" id="Wtf-Ct-zrX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTa-18-Hlg" userLabel="First Responder" sceneMemberID="firstResponder"/>

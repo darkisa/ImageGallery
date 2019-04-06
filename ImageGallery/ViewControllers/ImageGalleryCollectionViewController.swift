@@ -64,17 +64,13 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let destination = segue.destination as? ShowImageViewController {
-      if let image = (sender as? ImageCollectionViewCell)?.backgroundView as? UIImageView {
-        print(image)
-        destination.imageBuffer = image
-      }
+    if let destination = segue.destination as? ShowImageViewController, let index = sender as? Int {
+      destination.imageURL = gallery.images[index]
     }
   }
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath)
-    performSegue(withIdentifier: "ShowImageDetail", sender: cell.backgroundView)
+    performSegue(withIdentifier: "ShowImageDetail", sender: indexPath.row)
   }
   
   override func viewDidLoad() {
@@ -159,14 +155,13 @@ class ImageGalleryCollectionViewController: UICollectionViewController, UIDropIn
 }
 
 extension URL {
-  func fetchImage(url: URL, completionHandler: @escaping (UIImage) -> Void) {
+  func fetchImage(completionHandler: @escaping (UIImage) -> Void) {
     DispatchQueue.global(qos: .userInitiated).async {
-      if let urlContents = try? Data(contentsOf: url) {
+      if let urlContents = try? Data(contentsOf: self.imageURL) {
         if let fetchedImage = UIImage(data: urlContents) {
           completionHandler(fetchedImage)
         }
       }
     }
   }
-  
 }

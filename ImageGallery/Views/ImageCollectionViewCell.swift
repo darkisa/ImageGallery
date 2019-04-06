@@ -23,7 +23,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
   
   private func updateCellImage() {
     if imageURL != nil {
-      imageURL!.fetchImage(url: imageURL!) { [weak self](data) in
+      imageURL!.fetchImage { [weak self](data) in
         DispatchQueue.main.async {
           self?.backgroundView = UIImageView(image: data)
         }
